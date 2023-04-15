@@ -8,7 +8,6 @@ const config = {
   arrowParens: 'always',
   bracketSpacing: true,
   semi: true,
-  jsxBracketSameLine: false,
   jsxSingleQuote: true,
   plugins: [require.resolve('prettier-plugin-tailwindcss')],
 };

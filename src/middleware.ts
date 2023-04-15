@@ -1,7 +1,7 @@
 //  note - middleware runs on edge
-import { withClerkMiddleware } from "@clerk/nextjs/server";
-import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
+import { withClerkMiddleware } from '@clerk/nextjs/server';
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
 
 export default withClerkMiddleware((req: NextRequest) => {
   // console.log("🤗 middleware running", req);
@@ -17,7 +17,7 @@ export const config = {
      * - favicon.ico (favicon file)
      * - public folder
      */
-    "/((?!static|.*\\..*|_next|favicon.ico).*)",
-    "/",
+    '/((?!static|.*\\..*|_next|favicon.ico).*)',
+    '/',
   ],
 };
