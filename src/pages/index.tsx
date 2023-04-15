@@ -1,3 +1,4 @@
+import { SignOutButton, useUser } from "@clerk/nextjs";
 import { type NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
@@ -5,7 +6,8 @@ import Link from "next/link";
 import { api } from "~/utils/api";
 
 const Home: NextPage = () => {
-  const hello = api.example.hello.useQuery({ text: "from tRPC" });
+  // const hello = api.example.hello.useQuery({ text: "from tRPC" });
+  const { isSignedIn, user, isLoaded } = useUser();
 
   return (
     <>
@@ -17,9 +19,32 @@ const Home: NextPage = () => {
       <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c]">
         <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
           <h1 className="text-5xl font-extrabold tracking-tight text-white sm:text-[5rem]">
-            Create <span className="text-[hsl(280,100%,70%)]">T3</span> App
+            Sniff <span className="text-[hsl(280,100%,70%)]">Out</span>
           </h1>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
+          <div className="h-0 space-x-4 ">
+            {isLoaded && !isSignedIn && (
+              <>
+                <Link
+                  className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  href="/sign-in"
+                >
+                  Sign In
+                </Link>
+                {/* <Link
+                  className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  href="/sign-up"
+                >
+                  Sign Up
+                </Link> */}
+              </>
+            )}
+            {isLoaded && isSignedIn && (
+              <div className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                <SignOutButton />
+              </div>
+            )}
+          </div>
+          {/* <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
             <Link
               className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 text-white hover:bg-white/20"
               href="https://create.t3.gg/en/usage/first-steps"
@@ -42,10 +67,10 @@ const Home: NextPage = () => {
                 to deploy it.
               </div>
             </Link>
-          </div>
-          <p className="text-2xl text-white">
+          </div> */}
+          {/* <p className="text-2xl text-white">
             {hello.data ? hello.data.greeting : "Loading tRPC query..."}
-          </p>
+          </p> */}
         </div>
       </main>
     </>
