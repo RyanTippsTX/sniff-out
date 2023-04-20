@@ -1,4 +1,5 @@
 import { BrandLink } from './Brand';
+import { UserButton } from '@clerk/nextjs';
 
 export function Navbar() {
   const navLeft = (
@@ -9,16 +10,7 @@ export function Navbar() {
 
   const navRight = (
     <div className='flex flex-none flex-shrink place-content-end items-center gap-2'>
-      {/* <Link href={'/my-events'}>
-            <a className='font-semibold tracking-tight'>My Events</a>
-          </Link> */}
-      {/* <div className="px-1 font-medium tracking-tight">Host:</div> */}
-      {/* <AvatarDropdown
-            profileLoading={profileLoading}
-            displayName={profile?.display_name}
-            email={user.email}
-            avatarUrl={profile?.avatar_url}
-          /> */}
+      <UserButton />
     </div>
   );
 
