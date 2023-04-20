@@ -3,7 +3,7 @@ import { UserButton, SignedIn, SignedOut, useUser } from '@clerk/nextjs';
 import { LinkButton } from './Buttons';
 
 export function Navbar() {
-  const { isSignedIn, user, isLoaded } = useUser();
+  const { user } = useUser();
   const navLeft = (
     <div className='flex-none'>
       <BrandLink />
