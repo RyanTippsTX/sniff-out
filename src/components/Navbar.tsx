@@ -16,7 +16,9 @@ export function Navbar() {
         <LinkButton href='/sign-in'>Sign In</LinkButton>
       </SignedOut>
       <SignedIn>
-        <span>{user?.fullName || user?.primaryEmailAddress?.emailAddress}</span>
+        <span className='font-medium'>
+          {user?.firstName || user?.primaryEmailAddress?.emailAddress}
+        </span>
         <UserButton />
       </SignedIn>
     </div>
