@@ -1,14 +1,17 @@
 import Head from 'next/head';
 import { Footer } from './Footer';
 import { Navbar } from './Navbar';
+import clsx from 'clsx';
 
 import * as siteMeta from '~/global';
 
 export default function Layout({
   children,
+  centerContent,
   pageMeta,
 }: {
   children: React.ReactNode | React.ReactNode[];
+  centerContent?: boolean;
   pageMeta?: {
     pageTitle?: string;
     pageDescription?: string;
@@ -34,16 +37,18 @@ export default function Layout({
         <link rel='icon' href={siteMeta.favicon} />
         <link rel='apple-touch-icon' href={siteMeta.favicon} />
       </Head>
-      <header className='sticky top-0 z-10'>
-        <Navbar />
-      </header>
-      {/* <main className='flex min-h-screen flex-col items-center justify-center '> */}
-      <main className=''>
-        <div className='container mx-auto'>{children}</div>
-      </main>
-      <footer>
+      <div className={clsx('relative min-h-screen', centerContent && 'grid place-content-center')}>
+        <header className='absolute left-0 right-0 top-0'>
+          <Navbar />
+        </header>
+        {/* <main className='flex min-h-screen flex-col items-center justify-center '> */}
+        <main className=''>
+          <div className='container mx-auto'>{children}</div>
+        </main>
+        {/* <footer>
         <Footer />
-      </footer>
+      </footer> */}
+      </div>
     </>
   );
 }

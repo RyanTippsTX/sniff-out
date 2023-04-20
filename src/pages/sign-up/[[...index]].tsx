@@ -1,8 +1,9 @@
 import { SignUp } from '@clerk/nextjs';
+import Layout from '~/components/Layout';
 
 const SignUpPage = () => (
-  <div className='grid h-screen place-items-center'>
+  <Layout centerContent>
     <SignUp path='/sign-up' routing='path' signInUrl='/sign-in' />
-  </div>
+  </Layout>
 );
 export default SignUpPage;

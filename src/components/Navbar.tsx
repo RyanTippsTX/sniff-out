@@ -1,7 +1,9 @@
 import { BrandLink } from './Brand';
-import { UserButton } from '@clerk/nextjs';
+import { UserButton, SignedIn, SignedOut, useUser } from '@clerk/nextjs';
+import { LinkButton } from './LinkButton';
 
 export function Navbar() {
+  const { isSignedIn, user, isLoaded } = useUser();
   const navLeft = (
     <div className='flex-none'>
       <BrandLink />
@@ -10,7 +12,13 @@ export function Navbar() {
 
   const navRight = (
     <div className='flex flex-none flex-shrink place-content-end items-center gap-2'>
-      <UserButton />
+      <SignedOut>
+        <LinkButton href='/sign-in'>Sign In</LinkButton>
+      </SignedOut>
+      <SignedIn>
+        <span>{user?.fullName || user?.primaryEmailAddress?.emailAddress}</span>
+        <UserButton />
+      </SignedIn>
     </div>
   );
 

@@ -12,7 +12,7 @@ const Home: NextPage = () => {
   const { isLoading, isSuccess, data } = api.dogs.getAll.useQuery();
 
   return (
-    <Layout>
+    <Layout centerContent>
       <div className='flex flex-col items-center justify-center gap-12 px-4 py-16 '>
         <h1 className='text-5xl font-extrabold tracking-tight text-white sm:text-[5rem]'>
           <Brand />
@@ -20,12 +20,6 @@ const Home: NextPage = () => {
         <div className='h-0 space-x-4 '>
           {isLoaded && !isSignedIn && (
             <>
-              <Link
-                className='rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
-                href='/sign-in'
-              >
-                Sign In
-              </Link>
               <Link
                 className='rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
                 href='/sign-up'
