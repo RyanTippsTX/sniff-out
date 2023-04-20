@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 body {
-  @apply h-screen bg-gradient-to-br from-slate-800 via-slate-900 via-70% to-slate-950 text-white;
+  @apply h-screen bg-gradient-to-br from-slate-800 via-slate-900 via-70% to-slate-950 text-zinc-100;
 }
