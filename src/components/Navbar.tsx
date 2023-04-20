@@ -1,6 +1,6 @@
 import { BrandLink } from './Brand';
 import { UserButton, SignedIn, SignedOut, useUser } from '@clerk/nextjs';
-import { LinkButton } from './LinkButton';
+import { LinkButton } from './Buttons';
 
 export function Navbar() {
   const { isSignedIn, user, isLoaded } = useUser();
@@ -13,7 +13,9 @@ export function Navbar() {
   const navRight = (
     <div className='flex flex-none flex-shrink place-content-end items-center gap-2'>
       <SignedOut>
-        <LinkButton href='/sign-in'>Sign In</LinkButton>
+        <LinkButton style='ghost' href='/sign-in'>
+          Sign In
+        </LinkButton>
       </SignedOut>
       <SignedIn>
         <span className='font-medium'>
