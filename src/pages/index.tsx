@@ -1,4 +1,4 @@
-import { SignOutButton, useUser } from '@clerk/nextjs';
+import { SignOutButton, useUser, SignedIn } from '@clerk/nextjs';
 import { type NextPage } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -6,8 +6,9 @@ import Link from 'next/link';
 import { api } from '~/utils/api';
 
 const Home: NextPage = () => {
-  // const hello = api.example.hello.useQuery({ text: "from tRPC" });
   const { isSignedIn, user, isLoaded } = useUser();
+
+  const { isLoading, isSuccess, data } = api.dogs.getAll.useQuery();
 
   return (
     <>
@@ -30,12 +31,12 @@ const Home: NextPage = () => {
                 >
                   Sign In
                 </Link>
-                {/* <Link
-                  className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                  href="/sign-up"
+                <Link
+                  className='rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+                  href='/sign-up'
                 >
                   Sign Up
-                </Link> */}
+                </Link>
               </>
             )}
             {isLoaded && isSignedIn && (
@@ -44,33 +45,18 @@ const Home: NextPage = () => {
               </div>
             )}
           </div>
-          {/* <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
-            <Link
-              className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 text-white hover:bg-white/20"
-              href="https://create.t3.gg/en/usage/first-steps"
-              target="_blank"
-            >
-              <h3 className="text-2xl font-bold">First Steps →</h3>
-              <div className="text-lg">
-                Just the basics - Everything you need to know to set up your
-                database and authentication.
-              </div>
-            </Link>
-            <Link
-              className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 text-white hover:bg-white/20"
-              href="https://create.t3.gg/en/introduction"
-              target="_blank"
-            >
-              <h3 className="text-2xl font-bold">Documentation →</h3>
-              <div className="text-lg">
-                Learn more about Create T3 App, the libraries it uses, and how
-                to deploy it.
-              </div>
-            </Link>
-          </div> */}
-          {/* <p className="text-2xl text-white">
-            {hello.data ? hello.data.greeting : "Loading tRPC query..."}
-          </p> */}
+          <SignedIn>
+            {/* dogs */}
+            <div className='text-white'>
+              {isSuccess && <div>Dogs:</div>}
+              {isSuccess &&
+                data.map((dog) => (
+                  <div key={dog.id}>
+                    <pre>{JSON.stringify(dog, null, 2)}</pre>
+                  </div>
+                ))}
+            </div>
+          </SignedIn>
         </div>
       </main>
     </>
