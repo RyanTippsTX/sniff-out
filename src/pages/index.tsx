@@ -1,6 +1,7 @@
 import { SignOutButton, useUser, SignedIn } from '@clerk/nextjs';
 import { type NextPage } from 'next';
 import Link from 'next/link';
+import { Brand } from '~/components/Brand';
 import Layout from '~/components/Layout';
 
 import { api } from '~/utils/api';
@@ -14,7 +15,7 @@ const Home: NextPage = () => {
     <Layout>
       <div className='container flex flex-col items-center justify-center gap-12 px-4 py-16 '>
         <h1 className='text-5xl font-extrabold tracking-tight text-white sm:text-[5rem]'>
-          Sniff <span className='text-[hsl(280,100%,70%)]'>Out</span>
+          <Brand />
         </h1>
         <div className='h-0 space-x-4 '>
           {isLoaded && !isSignedIn && (

@@ -1,9 +1,9 @@
-import { Brand } from './Brand';
+import { BrandLink } from './Brand';
 
 export function Navbar() {
   const navLeft = (
     <div className='flex-none'>
-      <Brand />
+      <BrandLink />
     </div>
   );
 
@@ -23,7 +23,7 @@ export function Navbar() {
   );
 
   return (
-    <div className=''>
+    <div className='border-b-[1px] border-white/30'>
       <div className='container mx-auto '>
         <div className='flex h-16 place-content-between items-center gap-1 p-2'>
           {navLeft}

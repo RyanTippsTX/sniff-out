@@ -1,9 +1,16 @@
 import Link from 'next/link';
-import { title } from '~/global';
-export function Brand() {
+
+export const Brand = () => (
+  <span className='font-bold'>
+    <span className='text-white'>Sniff</span>
+    <span className='text-lime-500'>Out</span>
+  </span>
+);
+
+export function BrandLink() {
   return (
     <Link className='text-xl font-bold tracking-tight' href='/'>
-      {title}
+      <Brand />
     </Link>
   );
 }
