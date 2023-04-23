@@ -14,7 +14,7 @@ export function Navbar() {
     <div className='flex flex-none flex-shrink place-content-end items-center gap-2'>
       <SignedOut>
         <LinkButton style='ghost' href='/sign-in'>
-          Sign In
+          Sign In 🎾
         </LinkButton>
       </SignedOut>
       <SignedIn>
