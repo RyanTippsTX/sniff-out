@@ -9,6 +9,6 @@ export const dogsRouter = createTRPCRouter({
     };
   }),
   getAll: publicProcedure.query(({ ctx }) => {
-    return ctx.prisma.dog.findMany();
+    return ctx.prisma.dog.findMany({ include: { owner: { select: { name: true } } } });
   }),
 });
