@@ -1,6 +1,6 @@
 # SniffOut 🎾
 
-[SniffOut](https://sniff-out.vercel.app/) is an app for dogs and their owners.
+[SniffOut](https://sniffout.vercel.app/) is an app for dogs and their owners.
 
 ## Technologies
 
